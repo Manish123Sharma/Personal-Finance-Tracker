@@ -1,9 +1,15 @@
 import React from 'react'
+import Header from '../components/Header/Header'
+import '../App.css'
+import LoginRegister from '../components/Login_Register/LoginRegister'
 
 const SignUp = () => {
     return (
         <div>
-            <h1>Sign Up</h1>
+            <Header />
+            <div className="wrapper">
+                <LoginRegister />
+            </div>
         </div>
     )
 }
