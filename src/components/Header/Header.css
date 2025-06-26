@@ -1,8 +1,50 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
-}
+} */
 
 .navbar {
     background-color: var(--theme);
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+}
+
+.logo img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.logo-text h1{
+    color: var(--white);
+    font-weight: 500;
+}
+
+.logo-text span{
+    color: var(--shadow_color);
+}
+
+.logout-button{
+    border: none;
+    background-color: transparent;
+    color: var(--white);
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.logout-button:hover{
+    opacity: 2;
+    transform: scale(1.05);
+    transition: all 0.3s;
 }
