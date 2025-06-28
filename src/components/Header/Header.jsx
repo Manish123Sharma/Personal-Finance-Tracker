@@ -26,6 +26,6 @@ const Header = () => {
             {/* <p>This is header</p> */}
         </div>
     )
-}
+};
 
-export default Header
+export default Header;
