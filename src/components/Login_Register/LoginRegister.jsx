@@ -10,6 +10,10 @@ const LoginRegister = () => {
                     Financy
                 </span>
             </h2>
+            <form action="#" method="post">
+                <label htmlFor="name">Name: </label>
+                <input id="name" type="text" placeholder='Enter your name' />
+            </form>
         </div>
     );
 }
