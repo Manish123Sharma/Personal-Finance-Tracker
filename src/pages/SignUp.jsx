@@ -11,7 +11,7 @@ const SignUp = () => {
                 <LoginRegister />
             </div>
         </div>
-    )
+    );
 }
 
-export default SignUp
+export default SignUp;
