@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import './Input.css'
 
 const Input = ({ label, state, setState, placeholder, type }) => {
@@ -15,5 +16,13 @@ const Input = ({ label, state, setState, placeholder, type }) => {
         </div>
     );
 }
+
+Input.propTypes = {
+    label: PropTypes.string.isRequired,
+    state: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    setState: PropTypes.func.isRequired,
+    placeholder: PropTypes.string,
+    type: PropTypes.string
+};
 
 export default Input
