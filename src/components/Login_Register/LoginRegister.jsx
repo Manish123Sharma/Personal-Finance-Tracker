@@ -49,26 +49,11 @@ const LoginRegister = () => {
         // createDoc(user)
     };
 
-    // async function createDoc(user) {
-    //     if (!user) return;
-    //     const userRef = doc(db, 'users', user.uid);
-    //     const userData = await getDoc(userRef);
-    //     if (!userData.exists()) {
-    //         try {
-    //             await setDoc(doc(db, 'users', user.uid), {
-    //                 name: user.displayName ? user.displayName : name,
-    //                 email: user.email,
-    //                 photoURL: user.photoURL ? user.photoURL : '',
-    //                 createdAt: new Date(),
-    //             });
-    //         } catch (error) {
-    //             console.error("Error creating document:", error);
-    //             toast.error(error.message);
-    //         }
-    //     } else {
-    //         toast.error("Doc already exists");
-    //     }
-    // }
+    const handleGoogleSignup = (e) => {
+        e.preventDefault();
+        setLoading(true);
+        googleSignupHandler({ setLoading, navigate });
+    }
 
     const handleEmailLogin = (e) => {
         e.preventDefault();
@@ -98,7 +83,7 @@ const LoginRegister = () => {
                         <Input type={'password'} label={"Password"} state={password} setState={setPassword} placeholder={"********"} />
                         <Button disabled={loading} onClick={handleEmailLogin} text={loading ? 'Loading...' : 'Login using E-mail and Password'} />
                         <p style={{ textAlign: "center", margin: "0.5rem" }}>or</p>
-                        <Button disabled={loading} onClick={googleSignupHandler} blue={true} text={loading ? 'Loading...' : 'Login using Google'} />
+                        <Button disabled={loading} onClick={handleGoogleSignup} blue={true} text={loading ? 'Loading...' : 'Login using Google'} />
                         <p style={{ textAlign: "center", margin: "1rem", fontSize: "0.9rem" }}>
                             Doesn't have an account? <button
                                 type="button"
@@ -127,7 +112,7 @@ const LoginRegister = () => {
                         <Input type={'password'} label={"Confirm Password"} state={confirmPassword} setState={setConfirmPassword} placeholder={"********"} />
                         <Button disabled={loading} onClick={handleEmailSignup} text={loading ? 'Loading...' : 'Sign-Up using E-mail and Password'} />
                         <p style={{ textAlign: "center", margin: "0.5rem" }}>or</p>
-                        <Button disabled={loading} onClick={googleSignupHandler} blue={true} text={loading ? 'Loading...' : 'Sign-Up using Google'} />
+                        <Button disabled={loading} onClick={handleGoogleSignup} blue={true} text={loading ? 'Loading...' : 'Sign-Up using Google'} />
                         <p style={{ textAlign: "center", margin: "1rem", fontSize: "0.9rem" }}>
                             Already have an account? <button
                                 type="button"
