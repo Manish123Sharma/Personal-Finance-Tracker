@@ -1,0 +1,30 @@
+.my_card {
+    /* box-shadow: var(--shadow);
+    min-width: 400px;
+    padding: 0.2rem !important;
+    font-family: "Montserrat", sans-serif !important; */
+    box-shadow: var(--shadow);
+    margin: 1rem;
+    border-radius: 0.5rem;
+    min-width: 300px;
+    flex: 1;
+}
+
+.my_row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem auto;
+    width: 90%;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.my_card p {
+    margin: 0;
+}
+
+.ant-card-head-title {
+    margin: 1rem !important;
+    font-weight: 500;
+}
