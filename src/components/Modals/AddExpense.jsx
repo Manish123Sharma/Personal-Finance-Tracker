@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-    // Card,
-    // Col,
-    // Row,
     Button,
     Modal,
     Form,
@@ -12,14 +9,14 @@ import {
     Select,
 } from "antd";
 
-const AddExpense = (
-    {
-        isExpenseModalVisible,
-        handleExpenseCancel,
-        onFinish,
-    }
-) => {
+const AddExpense = ({
+    isExpenseModalVisible,
+    handleExpenseCancel,
+    onFinish,
+}) => {
     const [form] = Form.useForm();
+    const tagValue = Form.useWatch('tag', form); // Watch the "tag" value
+
     return (
         <Modal
             style={{ fontWeight: 600 }}
@@ -49,6 +46,7 @@ const AddExpense = (
                 >
                     <Input type="text" className="custom-input" />
                 </Form.Item>
+
                 <Form.Item
                     style={{ fontWeight: 600 }}
                     label="Amount"
@@ -59,6 +57,7 @@ const AddExpense = (
                 >
                     <Input type="number" className="custom-input" />
                 </Form.Item>
+
                 <Form.Item
                     style={{ fontWeight: 600 }}
                     label="Date"
@@ -69,6 +68,7 @@ const AddExpense = (
                 >
                     <DatePicker className="custom-input" format="YYYY-MM-DD" />
                 </Form.Item>
+
                 <Form.Item
                     label="Tag"
                     name="tag"
@@ -79,9 +79,27 @@ const AddExpense = (
                         <Select.Option value="food">Food</Select.Option>
                         <Select.Option value="education">Education</Select.Option>
                         <Select.Option value="office">Office</Select.Option>
-                        {/* Add more tags here */}
+                        <Select.Option value="other">Other</Select.Option>
                     </Select>
                 </Form.Item>
+
+                {/* Conditionally rendered 'Other' field */}
+                {tagValue === 'other' && (
+                    <Form.Item
+                        style={{ fontWeight: 600 }}
+                        label="Other"
+                        name="other"
+                        rules={[
+                            {
+                                required: true,
+                                message: "Please input the type of the transaction!",
+                            },
+                        ]}
+                    >
+                        <Input type="text" className="custom-input" />
+                    </Form.Item>
+                )}
+
                 <Form.Item>
                     <Button className="btn btn-blue" type="primary" htmlType="submit">
                         Add Expense
@@ -91,6 +109,7 @@ const AddExpense = (
         </Modal>
     );
 };
+
 AddExpense.propTypes = {
     isExpenseModalVisible: PropTypes.bool.isRequired,
     handleExpenseCancel: PropTypes.func.isRequired,
