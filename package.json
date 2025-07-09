@@ -10,12 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/charts": "^2.6.0",
     "@ant-design/v5-patch-for-react-19": "^1.0.3",
     "@reduxjs/toolkit": "^2.8.2",
+    "ant-design": "^1.0.0",
     "antd": "^5.26.3",
     "axios": "^1.10.0",
     "firebase": "^11.9.1",
     "moment": "^2.30.1",
+    "papaparse": "^5.5.3",
     "prop-types": "^15.8.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
