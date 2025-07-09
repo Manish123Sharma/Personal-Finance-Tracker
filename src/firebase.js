@@ -9,7 +9,7 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyCoA4YYgQ0UuLMViuKtRikwGeKZV4HUfSY",
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: "financy-2b078.firebaseapp.com",
     projectId: "financy-2b078",
     storageBucket: "financy-2b078.firebasestorage.app",
