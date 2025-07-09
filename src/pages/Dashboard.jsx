@@ -4,12 +4,15 @@ import Cards from '../components/Cards/Cards';
 // import { Modal } from 'antd';
 import AddExpense from '../components/Modals/AddExpense';
 import AddIncome from '../components/Modals/AddIncome';
-import moment from 'moment';
+// import moment from 'moment';
 import { toast } from 'react-toastify';
 import { addDoc, collection, getDocs, query } from 'firebase/firestore';
 import { auth, db } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Loader from '../components/Loader/Loader';
+import TranscationTable from '../components/Transcation Table/Transcation_Table';
+import Charts from '../components/Charts/Charts';
+import NoTranscation from '../components/Charts/NoTranscation';
 
 const Dashboard = () => {
     const [user] = useAuthState(auth);
@@ -62,12 +65,12 @@ const Dashboard = () => {
         // Get all the Docs from firestore
         fetchTranscation();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [user]);
 
     const onFinish = (values, type) => {
         const newTransaction = {
             type: type,
-            date: moment(values.date).format("YYYY-MM-DD"),
+            date: values.date.format("YYYY-MM-DD"),
             amount: parseFloat(values.amount),
             tag: values.tag,
             name: values.name,
@@ -80,7 +83,7 @@ const Dashboard = () => {
         calculateBalance();
     };
 
-    const addTransaction = async (transaction) => {
+    const addTransaction = async (transaction, many) => {
         // Add transcation to Doc in firestore
         try {
             const docRef = await addDoc(
@@ -88,10 +91,10 @@ const Dashboard = () => {
                 transaction
             );
             console.log("Document written with ID: ", docRef.id);
-            toast.success("Transaction Added!");
+            if(!many) toast.success("Transaction Added!");
         } catch (e) {
             console.error("Error adding document: ", e);
-            toast.error("Couldn't add transaction");
+            if(!many) toast.error("Couldn't add transaction");
         }
     }
 
@@ -115,7 +118,12 @@ const Dashboard = () => {
     // Calculate the initial balance, income, and expenses
     useEffect(() => {
         calculateBalance();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [transcation]);
+
+    let sortedTranscation = transcation.toSorted((a, b) => {
+        return new Date(a.date) - new Date(b.date);
+    });
 
 
     return (
@@ -148,6 +156,8 @@ const Dashboard = () => {
                     </>
                 )
             }
+            {transcation && transcation.length != 0 ? <Charts sortedTranscation={sortedTranscation} /> : <NoTranscation />}
+            <TranscationTable addTransaction={addTransaction} fetchTransactions={fetchTranscation} transcation={transcation} />
         </div>
     );
 };
