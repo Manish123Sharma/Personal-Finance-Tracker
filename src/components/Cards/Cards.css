@@ -28,3 +28,7 @@
     margin: 1rem !important;
     font-weight: 500;
 }
+
+.my_card h2{
+    margin-bottom: 20px;
+}
