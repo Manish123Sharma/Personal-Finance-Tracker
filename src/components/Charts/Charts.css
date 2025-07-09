@@ -1,0 +1,26 @@
+/* .charts_wrapper{
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    margin: 2rem;
+} */
+
+.charts_wrapper {
+    display: flex;
+    flex-wrap: wrap; /* allow wrapping on smaller screens */
+    justify-content: center; /* center the charts */
+    gap: 2rem;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    margin: 2rem;
+}
+
+.charts_wrapper > div {
+    flex: 1 1 450px; /* allow both charts to grow/shrink */
+    max-width: 600px;
+    min-width: 300px;
+}
