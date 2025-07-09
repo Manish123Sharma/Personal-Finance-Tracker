@@ -13,29 +13,30 @@
     justify-content: space-between;
     align-items: center;
     max-width: 100%;
+    z-index: 1000;
 }
 
-.logo img{
+.logo img {
     height: 50px;
     width: 50px;
     border-radius: 50%;
 }
 
-.logo{
+.logo {
     display: flex;
     align-items: center;
 }
 
-.logo-text h1{
+.logo-text h1 {
     color: var(--white);
     font-weight: 500;
 }
 
-.logo-text span{
+.logo-text span {
     color: var(--shadow_color);
 }
 
-.logout-button{
+.logout-button {
     border: none;
     background-color: transparent;
     color: var(--white);
@@ -43,8 +44,21 @@
     cursor: pointer;
 }
 
-.logout-button:hover{
+.logout-button:hover {
     opacity: 2;
     transform: scale(1.05);
+    transition: all 0.3s;
+}
+
+.navbar-link {
+    color: #e3e3e3;
+    font-weight: 500;
+    margin: 0px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.navbar-link:hover {
+    color: #fff;
     transition: all 0.3s;
 }

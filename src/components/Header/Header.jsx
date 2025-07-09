@@ -6,6 +6,7 @@ import { auth } from '../../firebase';
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { toast } from 'react-toastify';
+import userSvg from '../../assets/user.svg'
 
 const Header = () => {
     const navigate = useNavigate();
@@ -43,13 +44,26 @@ const Header = () => {
                     <span>Personal Finance Tracker</span>
                 </div>
             </div>
-            {user && <button
-                type="button"
-                className="logout-button"
-                onClick={() => handlelogout()}
-            >
-                ⏻ Logout
-            </button>}
+            {user && <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem' }}>
+                <span className='navbar-link' style={{ marginRight: "1rem" }}>
+                    <img alt=''
+                        src={user.photoURL ? user.photoURL : userSvg}
+                        width={user.photoURL ? "35" : "24"}
+                        style={{ borderRadius: "50%" }}
+                    />
+                </span>
+                <button
+                    style={{
+                        fontSize: '25px',
+                    }}
+                    type="button"
+                    className="logout-button"
+                    onClick={() => handlelogout()}
+                >
+                    ⏻ Logout
+                </button>
+            </div>
+            }
 
             {/* <p>This is header</p> */}
         </div>
